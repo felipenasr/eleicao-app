@@ -1,0 +1,6 @@
+<div *ngIf="estadosApuracao.length > 0">
+    <div *ngFor="let estado of estadosApuracao; index as i">
+          <app-estados [estado]="estado" [index]="i"></app-estados>
+    </div>
+</div>
+
