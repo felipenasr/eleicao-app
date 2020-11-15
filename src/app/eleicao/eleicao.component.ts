@@ -5,8 +5,7 @@ import { EstadosComponent } from './estados/estados.component'
 
 @Component({
   selector: 'app-eleicao',
-  templateUrl: './eleicao.component.html',
-  styleUrls: ['./eleicao.component.css']
+  templateUrl: './eleicao.component.html'
 })
 export class EleicaoComponent implements OnInit {
   @Input() data : any;
