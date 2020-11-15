@@ -1,34 +1,15 @@
 <div class="container">
- <div class="row">
-
-   <div class="col card m-1">
-    <div *ngIf="estado.sigla !='US'">
-      <h5><b>{{estado.nomeEstado}}</b></h5>
-
-      <h6>Total: {{estado.total | number}}</h6>
-      <h6>Apuradas: {{estado.apuradas}}%</h6>
-      <h6>Restante de votos: {{estado.restantesEstimados| number}}</h6>
-
-
-    </div>
-
-    <div *ngIf="estado.sigla =='US'">
-      <h2><b>{{estado.nomeEstado}}</b></h2>
-      <h6>Total: {{estado.total | number}}</h6>
-    </div>
-
-     <div *ngFor="let result of estado.results; index as i">
-       <b>
-         {{result.name}}
-        </b>
+  <div class="row">
+    <div class="col card">
+      <div class="card-body">
+        <h6>
+          {{estado.candidato}}
+        </h6>
+        <h6>Porcentagem: {{estado.porcentagem}}%
+        </h6>
         <p>
-          Porcentagem: <b>{{result.perc}}%</b> <br>
-          Total de votos: {{result.votos | number}}
+          Total: {{estado.abs | number}}
         </p>
       </div>
-
     </div>
-
-  </div>
-
 </div>

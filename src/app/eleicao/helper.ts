@@ -2,21 +2,20 @@ import { trump, biden} from './constantes'
 
 export const calculaRestante = (total, apuradas) => (Math.ceil((total*100)/apuradas) - total);
 
-export const dataFormater = (estados, data)=> {
-  let dadosEleitorias: Array<DadosEleitorias> = [];
-  Object.keys(estados).forEach(el => {
-    let results = montaResult(data[el][0].summary.results, el)
+export const dataFormater = (data)=> {
+  let a = []
 
-    let estado = new DadosEleitorias(
-                        estados[el],
-                        results.resultados,
-                        results.totalCount,
-                        data[el][0].summary.eevp,
-                        el)
+  data.forEach(el => {
+    a.push({
+      candidato: el.nm,
+      vice: el.nv,
+      porcentagem: el.pvap,
+      abs: parseInt(el.vap),
+      posicao: parseInt(el.seq)
+    })
+  });
 
-    dadosEleitorias.push(estado);
-  })
-  return dadosEleitorias;
+  return a;
 }
 
 const montaResult = (result, chave)=> {

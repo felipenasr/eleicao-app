@@ -10,8 +10,14 @@ import axios from 'axios'
 export class AppComponent implements OnInit {
 
   constructor(){ }
-  data;
+  data = {
+    sp: undefined, os:undefined
+  };
   desabilitado = false;
+  osasco = 'sp67890-c0011-e000426-r';
+  sp = 'sp71072-c0011-e000426-r';
+  cash = '';
+  urnas = 0;
   ngOnInit(){
 
     (function() {
@@ -32,14 +38,20 @@ export class AppComponent implements OnInit {
     })();
 
 
-    this.getData();
+    this.getData(this.sp);
   }
 
-  async getData() {
+  async getData(lk) {
     this.desabilitado = true;
-    const res = await axios.get('https://interactives.ap.org/elections/live-data/production/2020-11-03/president/summary.json');
-    this.data = res.data;
+    this.cash = lk;
+    const res = await axios.get(`https://resultados.tse.jus.br/oficial/ele2020/divulgacao/oficial/426/dados-simplificados/sp/${lk}.json`);
+    this.urnas = res.data.psi;
+    this.data = res.data.cand;
     this.desabilitado = false;
+  }
+
+  alterna() {
+    return this.cash === this.sp ? this.getData(this.osasco) : this.getData(this.sp);
   }
 
 }

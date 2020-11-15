@@ -1,5 +1,8 @@
 <div class="container">
-  <button  [disabled]="desabilitado" (click)="getData()">ATUALIZAR</button>
+  <button  [disabled]="desabilitado" (click)="alterna()">ATUALIZAR</button>
+  <p *ngIf="data && !desabilitado">
+    Apuradas: {{urnas}} %
+  </p>
   <div class="row">
     <div class="col card m-1">
 

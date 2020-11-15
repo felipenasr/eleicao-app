@@ -10,17 +10,17 @@ import { EstadosComponent } from './estados/estados.component'
 })
 export class EleicaoComponent implements OnInit {
   @Input() data : any;
-  estadosApuracao: Array<DadosEleitorias>;
+  estadosApuracao: Array<any>;
 
   constructor(
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data.results.NV[0].summary);
-
-    this.estadosApuracao = dataFormater(estados, this.data.results);
+    this.estadosApuracao = dataFormater(this.data);
     console.log(this.estadosApuracao);
-
+    this.estadosApuracao.sort((a,b) => {
+      return a.posicao - b.posicao;
+    })
   }
 
 
